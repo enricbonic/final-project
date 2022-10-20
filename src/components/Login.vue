@@ -8,18 +8,21 @@
                         <input v-model="email" class="input" type="email" placeholder="email">
                     </div>
                 </div>
+                <br>
                 <div class="field">
                     <label class="label">Password</label>
                     <div class="control">
                         <input v-model="password" class="input" type="password" placeholder="password">
                     </div>
                 </div>
+                <br>
                 <div class="field">
                     <div class="control">
                         <button class="button is-link is-fullwidth" type="submit" placeholder="Inicia sessió">Inicia sessió</button>
                         <!-- <input class="button is-link is-fullwidth" type="submit" placeholder="Text input"> -->
                     </div>
                 </div>
+                <br>
                 <div class="field">
                     Encara no estàs registrat? 
                     <router-link :to="{name: 'register'}">Registra't</router-link>
@@ -58,14 +61,31 @@ const onSubmit = (async () => {
 </script>
 <style scoped>
 .container{
-    background-color: rgb(180, 245, 179);
+    border: black 1px solid;
+    border-radius: 8px;
     height: 100%;
+    width: 350px;
 }
 .container>form{
     padding: 20px;
 }
 .field>div>input{
     height: 50px;
-    width: 300px
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    background-color: beige;
+    border-radius: 5px;
+}
+.field>div>button{
+    height: 50px;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    background-color: blue;
+    color: beige;
+    border-radius: 5px;
 }
 </style>

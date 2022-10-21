@@ -33,8 +33,11 @@ console.log(`Títol: ${title.value}`);
 console.log(`Descripció: ${description.value}`);
 
 const addTask = (async () => {
-    taskStore.addTask(title.value, description.value, authStore.user.id);
-    router.push({ name: 'maintasks' });
+    await taskStore.addTask(title.value, description.value, authStore.user.id);
+    // router.push({ name: 'maintasks' });
+    title.value = '';
+    description.value = '';
+    taskStore.setTask()
 });
 </script>
 

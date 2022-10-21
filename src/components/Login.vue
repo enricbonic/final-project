@@ -10,7 +10,7 @@
                 </div>
                 <br>
                 <div class="field">
-                    <label class="label">Password</label>
+                    <label class="label">Contrasenya</label>
                     <div class="control">
                         <input v-model="password" class="input" type="password" placeholder="password">
                     </div>
@@ -44,7 +44,6 @@ import { useAuthStore } from '../store/auth';
 
 const router = useRouter();
 const authStore = useAuthStore();
-const name = ref('');
 const email = ref('');
 const password = ref('');
 

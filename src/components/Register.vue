@@ -10,16 +10,16 @@
                 </div>
                 <br>
                 <div class="field">
-                    <label class="label">Password</label>
+                    <label class="label">Contrasenya</label>
                     <div class="control">
                         <input v-model="password" class="input" type="password" placeholder="password">
                     </div>
                 </div>
                 <br>
                 <div class="field">
-                    <label class="label">Password</label>
+                    <label class="label">Confirma la contrasenya</label>
                     <div class="control">
-                        <input v-model="password" class="input" type="password" placeholder="password">
+                        <input v-model="confirmPassword" class="input" type="password" placeholder="confirm password">
                     </div>
                 </div>
                 <br>
@@ -51,16 +51,20 @@ import { useAuthStore } from '../store/auth'
 
 const router = useRouter();
 const authStore = useAuthStore();
-const name = ref('');
 const email = ref('');
 const password = ref('');
+const confirmPassword = ref('');
 
-const onSubmit = () => {
-    console.log('formulario enviado', email.value, password.value)
-    authStore.register(email.value, password.value);
-    // Nos redirige al home
-    router.push({ name: 'login' })
-}
+const onSubmit = (async () => {
+    console.log('formulario enviado', email.value, password.value, confirmPassword.value)
+    if (password.value === confirmPassword.value){
+        await authStore.register(email.value, password.value);
+        // Nos redirige al home
+        router.push({ name: 'login' })
+    } else {
+        alert('Les contrasenyes no coincideixen')
+    }
+})
 
 </script>
 <style scoped>

@@ -4,28 +4,29 @@ import { updateTask, supabase } from '../api'
 
 export const useTaskStore = defineStore('task', {
     // arrow function recommended for full type inference
-    state: () => {
-        return {
+    state: () => ({
+        
             // all these properties will have their type inferred automatically
             // Guardaremos los task que nos de supabase
-            tasks: []
-        }
-    },
+            task: undefined,
+    
+    }),
     actions: {
 
         async setTask() {
-            const response = await supabase
+            const {data: task, error} = await supabase
             .from('task')
             .select('*')
-            .order('id', { ascending: false })
-    
+            .order('id', { ascending: false });
+            this.task = task
+            return this.task
             //TODO guardar en el stado las task que nos de supabase
         },
 
-        async updateTask(id, task) {
+        async updateTask(title, description, id) {
             const response = await supabase
             .from('task')
-            .update(task)
+            .update({ title, description})
             .eq('id', id)
             // TODO modificar el estado de la task
             // Encontrar el indice de la task con ese id y cambiar su contenido con task
@@ -41,14 +42,24 @@ export const useTaskStore = defineStore('task', {
         },
 
         async addTask(title, description, user_id) {
-            const response = await supabase.from('task')
-        .insert([{title: title, description: description, user_id: user_id},])
+            const response = await supabase
+            .from('task')
+            .insert([{title: title, description: description, user_id: user_id},])
         console.log(response)
         //     // TODO modificar el estado de task haciendo un push de la task
         //     // Comprobar que tenemos el id al insertar el registro, en caso de no tenerlo tendriamos que hacer el getTask
+        },
+        async doneTask (id, isCreated) {
+            const response = await supabase
+            .from('task')
+            .update({isCreated: !isCreated})
+            .eq({'id': id})
         }
 
 
 
-    }
+    },
+    persist: {
+        enabled: true,
+    },
 })

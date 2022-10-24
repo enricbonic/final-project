@@ -15,7 +15,7 @@ const routes = [
                 path: 'creartask',
                 name: 'creartask',
                 component: () => import('../components/CrearTask.vue'),
-            }
+            },
         ]
     },
     {

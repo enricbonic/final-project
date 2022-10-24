@@ -11,6 +11,7 @@
     <router-view></router-view>
 </template>
 <script setup>
+import piniaPersist from 'pinia-plugin-persist'
 import { onMounted } from 'vue';
 import { storeToRefs } from 'pinia';
 import { useRouter } from 'vue-router';

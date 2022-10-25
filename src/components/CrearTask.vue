@@ -4,10 +4,10 @@
         <form  @submit.prevent="addTask()" id="form" action="">
             <button @click="write"><h1>Amaga</h1></button>
             <br>
-            <label for="title">Títol</label>
+            <!-- <label for="title">Títol</label> -->
             <input v-model="title" class="title" type="text" id="title" placeholder="Què has de fer?">
             <br>
-            <label for="description">Detalls</label>
+            <!-- <label for="description">Detalls</label> -->
             <textarea v-model="description" name="description" id="description" cols="30" rows="10"
             placeholder="Explica-li què ha de fer al teu jo del futur."></textarea>
             <br>

@@ -1,1 +1,0 @@
-import{_ as o}from"./file__plugin-vue_export-helper.e718e6fb.js";import{b as t,o as r,c as n,e as a,F as c,d as s}from"./file_index.2d357be0.js";const _={},m=s("h1",null,"Qu\xE8 farem avui?",-1);function u(l,f){const e=t("router-view");return r(),n(c,null,[m,a(e)],64)}const p=o(_,[["render",u]]);export{p as default};

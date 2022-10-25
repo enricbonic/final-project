@@ -3,18 +3,20 @@
     <div class="tasksGrid" v-if="editing">
       <div class="updateCard">
         <div class="updateInfo">
+          <label for="titol">Títol de la tasca</label>
           <textarea
             v-model="updateTask.title"
-            name=""
-            id=""
+            name="titol"
+            id="titol"
             cols="30"
             rows="10"
             >{{ props.task.title }}</textarea
           >
+          <label for="descripcio">Descripció</label>
           <textarea
             v-model="updateTask.description"
-            name=""
-            id=""
+            name="descripcio"
+            id="descripcio"
             cols="30"
             rows="10"
             >{{ props.task.description }}</textarea
@@ -26,29 +28,17 @@
         </div>
       </div>
     </div>
-    <div class="tasksGrid" v-else v-if="doing">
-      <div class="card">
-        <div class="cardInfo">
-          <div class="titol">{{ props.task.title }}</div>
-          <div class="descripcio">{{ props.task.description }}</div>
-          <div class="botons">
-            <button @click="edit">Editar</button>
-            <!-- <button v-if="doing" @click="doneTask()">Tasca feta</button> -->
-            <button @click="doneTask()">Torna a crear</button>
-            <button @click="deleteTask()">Eliminar</button>
-          </div>
-        </div>
-      </div>
-    </div>
     <div class="tasksGrid" v-else>
-      <div class="cardDone">
+      <div :class="[doing ? 'card':'cardDone']">
         <div class="cardInfo">
+          <div>
           <div class="titol">{{ props.task.title }}</div>
           <div class="descripcio">{{ props.task.description }}</div>
+        </div>
           <div class="botons">
             <button @click="edit">Editar</button>
-            <button @click="doneTask()">Tasca feta</button>
-            <!-- <button v-else @click="doneTask()">Torna a crear</button> -->
+            <button v-if="doing" @click="doneTask()">Tasca feta</button>
+            <button v-else @click="doneTask()">Torna a crear</button>
             <button @click="deleteTask()">Eliminar</button>
           </div>
         </div>
@@ -108,6 +98,13 @@ const deleteTask = async () => {
 .mainTask{
   margin: 0;
 }
+.cardDone{
+  background: linear-gradient(rgb(128, 1, 1), rgb(255, 136, 0));
+  height: 200px;
+  display: flex;
+  border-radius: 8px;
+  margin: 2% 10%;
+}
 .card {
   background: linear-gradient(rgb(255, 255, 0), rgb(172, 172, 12));
   height: 200px;
@@ -155,12 +152,5 @@ button{
   background: none;
   border: 0;
   color: blue;
-}
-.cardDone{
-  background: linear-gradient(rgb(128, 1, 1), rgb(255, 136, 0));
-  height: 200px;
-  display: flex;
-  border-radius: 8px;
-  margin: 5% 10%;
 }
 </style>

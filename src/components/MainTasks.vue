@@ -15,13 +15,14 @@
       <div class="descripcio">{{ props.task.description }}</div>
       <div>
         <button @click="edit">Editar</button>
-        <button v-if="isDone" @click="doneTask()">Tasca feta</button>
+        <button v-if="doing" @click="doneTask()">Tasca feta</button>
         <button v-else @click="doneTask()">Torna a crear</button>
         <button @click="deleteTask()">Eliminar</button>
       </div>
     </div>
   </div>
   <br />
+  
   <router-view></router-view>
 </template>
 
@@ -39,8 +40,7 @@ const supabase = createClient(
 );
 const props = defineProps({ task: Object });
 const editing = ref(false);
-const isDone = (props.task.isCreated === false)
- 
+const doing = ref(true);
 
 
 const edit = () => {
@@ -56,6 +56,7 @@ const saveTask = (async () => {
         updateTask.value.description,
         props.task.id
     );
+    editing.value = !editing.value;
     taskStore.setTask();
 });
 
@@ -63,6 +64,7 @@ const doneTask = async () => {
   await taskStore.doneTask(props.task.id, !props.task.isCreated);
   taskStore.setTask();
   console.log(props.task.id);
+  doing.value = !doing.value
 };
 const deleteTask = async () => {
   await taskStore.deleteTask(props.task.id);

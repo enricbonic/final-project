@@ -1,13 +1,13 @@
 <template>
     <h1>Què farem avui?</h1>
-    <ul>
+    <!-- <ul>
         <li>
             <router-link :to="{name: 'home'}">Home</router-link>
         </li>
         <li>
             <router-link :to="{name: 'login'}">Auth</router-link>
         </li>
-    </ul>
+    </ul> -->
     <router-view></router-view>
 </template>
 <script setup>

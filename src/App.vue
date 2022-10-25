@@ -1,5 +1,5 @@
 <template>
-    <h1>Què farem avui?</h1>
+    <!-- <h1>Què farem avui?</h1> -->
     <!-- <ul>
         <li>
             <router-link :to="{name: 'home'}">Home</router-link>

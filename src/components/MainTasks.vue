@@ -1,28 +1,61 @@
 <template>
-   <div class="updateCard" v-if="editing">
-    <div class="updateInfo">
-      <textarea v-model="updateTask.title" name="" id="" cols="30" rows="10">{{props.task.title}}</textarea>
-      <textarea v-model="updateTask.description" name="" id="" cols="30" rows="10">{{props.task.description}}</textarea>
-      <div>
-        <button @click="saveTask">Guarda els canvis</button>
-        <button @click="edit">Cancel·la</button>
+  <section class="mainTask">
+    <div class="tasksGrid" v-if="editing">
+      <div class="updateCard">
+        <div class="updateInfo">
+          <textarea
+            v-model="updateTask.title"
+            name=""
+            id=""
+            cols="30"
+            rows="10"
+            >{{ props.task.title }}</textarea
+          >
+          <textarea
+            v-model="updateTask.description"
+            name=""
+            id=""
+            cols="30"
+            rows="10"
+            >{{ props.task.description }}</textarea
+          >
+          <div class="botons">
+            <button @click="saveTask">Guarda els canvis</button>
+            <button @click="edit">Cancel·la</button>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="card" v-else>
-    <div class="cardInfo">
-      <div class="titol">{{ props.task.title }}</div>
-      <div class="descripcio">{{ props.task.description }}</div>
-      <div>
-        <button @click="edit">Editar</button>
-        <button v-if="doing" @click="doneTask()">Tasca feta</button>
-        <button v-else @click="doneTask()">Torna a crear</button>
-        <button @click="deleteTask()">Eliminar</button>
+    <div class="tasksGrid" v-else v-if="doing">
+      <div class="card">
+        <div class="cardInfo">
+          <div class="titol">{{ props.task.title }}</div>
+          <div class="descripcio">{{ props.task.description }}</div>
+          <div class="botons">
+            <button @click="edit">Editar</button>
+            <!-- <button v-if="doing" @click="doneTask()">Tasca feta</button> -->
+            <button @click="doneTask()">Torna a crear</button>
+            <button @click="deleteTask()">Eliminar</button>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-  <br />
-  
+    <div class="tasksGrid" v-else>
+      <div class="cardDone">
+        <div class="cardInfo">
+          <div class="titol">{{ props.task.title }}</div>
+          <div class="descripcio">{{ props.task.description }}</div>
+          <div class="botons">
+            <button @click="edit">Editar</button>
+            <button @click="doneTask()">Tasca feta</button>
+            <!-- <button v-else @click="doneTask()">Torna a crear</button> -->
+            <button @click="deleteTask()">Eliminar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <router-view></router-view>
 </template>
 
@@ -42,29 +75,28 @@ const props = defineProps({ task: Object });
 const editing = ref(false);
 const doing = ref(true);
 
-
 const edit = () => {
   editing.value = !editing.value;
 };
-const updateTask = ref ({
-    title: props.task.title,
-    description: props.task.description
-})
-const saveTask = (async () => {
-    await taskStore.updateTask(
-        updateTask.value.title,
-        updateTask.value.description,
-        props.task.id
-    );
-    editing.value = !editing.value;
-    taskStore.setTask();
+const updateTask = ref({
+  title: props.task.title,
+  description: props.task.description,
 });
+const saveTask = async () => {
+  await taskStore.updateTask(
+    updateTask.value.title,
+    updateTask.value.description,
+    props.task.id
+  );
+  editing.value = !editing.value;
+  taskStore.setTask();
+};
 
 const doneTask = async () => {
   await taskStore.doneTask(props.task.id, !props.task.isCreated);
   taskStore.setTask();
   console.log(props.task.id);
-  doing.value = !doing.value
+  doing.value = !doing.value;
 };
 const deleteTask = async () => {
   await taskStore.deleteTask(props.task.id);
@@ -73,18 +105,22 @@ const deleteTask = async () => {
 </script>
 
 <style>
+.mainTask{
+  margin: 0;
+}
 .card {
-  background-color: aqua;
-  width: 300px;
+  background: linear-gradient(rgb(255, 255, 0), rgb(172, 172, 12));
   height: 200px;
   display: flex;
   border-radius: 8px;
+  margin: 2% 10%;
 }
 .cardInfo {
   padding: 20px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  width: 100%;
 }
 .titol {
   font-size: 20px;
@@ -94,17 +130,37 @@ const deleteTask = async () => {
   font-weight: lighter;
 }
 .updateCard {
-  background-color: aqua;
-  width: 300px;
+  background: linear-gradient(rgb(255, 255, 0), rgb(255, 136, 0));
   height: 200px;
   display: flex;
   border-radius: 8px;
+  margin: 5% 10%;
 }
 .updateInfo {
   padding: 20px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  width: 100%;
 }
-
+.updateInfo>textarea{
+  background: none;
+}
+.botons{
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+button{
+  background: none;
+  border: 0;
+  color: blue;
+}
+.cardDone{
+  background: linear-gradient(rgb(128, 1, 1), rgb(255, 136, 0));
+  height: 200px;
+  display: flex;
+  border-radius: 8px;
+  margin: 5% 10%;
+}
 </style>

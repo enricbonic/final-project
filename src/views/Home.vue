@@ -1,6 +1,8 @@
 <template>
-    <h1>Home</h1>
-   <router-link :to="{ name: 'login' }"><button class="button is-link is-fullwidth" type="submit" placeholder="logout">Log Out</button></router-link>
+    <div class="navbar">
+    <h1>Què farem avui?</h1>
+   <router-link :to="{ name: 'login' }"><button class="button" type="submit" placeholder="logout">Log Out</button></router-link>
+</div>
    <!-- <router-link :to="{name: 'creartask'}"><button>Tasca nova</button></router-link> -->
 <section>
     <CrearTask />
@@ -34,4 +36,8 @@ taskStore.setTask()
 
 </script>
 <style scoped>
+.navbar{
+    display: flex;
+    justify-content: space-between;
+}
 </style>

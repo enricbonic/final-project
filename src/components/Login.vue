@@ -54,7 +54,7 @@ const onSubmit = (async () => {
     router.push({ name: 'home' });
 }
     catch(error){
-        alert('No estàs registrat')
+        alert('Usuari o contrasenya incorrectes.')
     };
 });
 </script>
@@ -83,8 +83,8 @@ const onSubmit = (async () => {
     padding: 0;
     margin: 0;
     border: 0;
-    background-color: blue;
-    color: beige;
+    background-color: cornflowerblue;
+    color: white;
     border-radius: 5px;
 }
 </style>

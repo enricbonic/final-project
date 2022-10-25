@@ -60,11 +60,14 @@ const onSubmit = (async () => {
     if (password.value === confirmPassword.value){
         await authStore.register(email.value, password.value);
         // Nos redirige al home
-        router.push({ name: 'login' })
+        email.value = '',
+        password.value = '',
+        confirmPassword.value = '';
+        router.push({ name: 'login' });
     } else {
         alert('Les contrasenyes no coincideixen')
     }
-})
+});
 
 </script>
 <style scoped>
@@ -92,8 +95,8 @@ const onSubmit = (async () => {
     padding: 0;
     margin: 0;
     border: 0;
-    background-color: blue;
-    color: beige;
+    background-color: cornflowerblue;
+    color: white;
     border-radius: 5px;
 }
 </style>

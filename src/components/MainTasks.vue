@@ -29,7 +29,7 @@
       </div>
     </div>
     <div class="tasksGrid" v-else>
-      <div :class="[doing ? 'card':'cardDone']">
+      <div :class="[props.task.isCreated ? 'cardDone':'card']">
         <div class="cardInfo">
           <div>
           <div class="titol">{{ props.task.title }}</div>
@@ -72,6 +72,7 @@ const updateTask = ref({
   title: props.task.title,
   description: props.task.description,
 });
+
 const saveTask = async () => {
   await taskStore.updateTask(
     updateTask.value.title,
@@ -84,9 +85,9 @@ const saveTask = async () => {
 
 const doneTask = async () => {
   await taskStore.doneTask(props.task.id, !props.task.isCreated);
-  taskStore.setTask();
   console.log(props.task.id);
   doing.value = !doing.value;
+  taskStore.setTask();
 };
 const deleteTask = async () => {
   await taskStore.deleteTask(props.task.id);
@@ -101,6 +102,7 @@ const deleteTask = async () => {
 .cardDone{
   background: linear-gradient(rgb(128, 1, 1), rgb(255, 136, 0));
   height: 200px;
+  width: 300px;
   display: flex;
   border-radius: 8px;
   margin: 2% 10%;
@@ -108,6 +110,7 @@ const deleteTask = async () => {
 .card {
   background: linear-gradient(rgb(255, 255, 0), rgb(172, 172, 12));
   height: 200px;
+  width: 300px;
   display: flex;
   border-radius: 8px;
   margin: 2% 10%;
@@ -129,9 +132,10 @@ const deleteTask = async () => {
 .updateCard {
   background: linear-gradient(rgb(255, 255, 0), rgb(255, 136, 0));
   height: 200px;
+  width: 300px;
   display: flex;
   border-radius: 8px;
-  margin: 5% 10%;
+  margin: 2% 10%;
 }
 .updateInfo {
   padding: 20px;

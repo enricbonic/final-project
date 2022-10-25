@@ -16,6 +16,6 @@ export default defineConfig({
         }
     },
     server: {
-        base: process.env.NODE_ENV === 'production' ? '/nFinal-project-Ironhack/' : '/',
+        base: process.env.NODE_ENV === 'production' ? '/Final-project-Ironhack/' : '/',
     }
 })

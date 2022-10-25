@@ -58,11 +58,15 @@ const confirmPassword = ref('');
 const onSubmit = (async () => {
     console.log('formulario enviado', email.value, password.value, confirmPassword.value)
     if (password.value === confirmPassword.value){
-        await authStore.register(email.value, password.value);
+        try {
+        await authStore.register(email.value, password.value);}
+        catch (error) {
+            console.log(error)
+        }
+        // email.value = '';
+        // password.value = '';
+        // confirmPassword.value = '';
         // Nos redirige al home
-        email.value = '',
-        password.value = '',
-        confirmPassword.value = '';
         router.push({ name: 'login' });
     } else {
         alert('Les contrasenyes no coincideixen')

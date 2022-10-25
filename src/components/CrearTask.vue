@@ -48,6 +48,7 @@ const addTask = (async () => {
     title.value = '';
     description.value = '';
     taskStore.setTask()
+    router.push({ name: 'home' })
 });
 </script>
 

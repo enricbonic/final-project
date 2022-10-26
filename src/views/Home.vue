@@ -15,6 +15,7 @@
         <MainTasks :task="task" />
       </div>
     </div>
+    <br>
   </section>
 </template>
 <script setup>
@@ -24,7 +25,6 @@ import { useAuthStore } from "../store/auth";
 import { useTaskStore } from "../store/task";
 import MainTasks from "../components/MainTasks.vue";
 import CrearTask from "../components/CrearTask.vue";
-
 const router = useRouter();
 const authStore = useAuthStore();
 const email = ref("");
@@ -37,21 +37,44 @@ const onSubmit = () => {
   router.push({ name: "login" });
 };
 taskStore.setTask();
+
+
 </script>
 <style scoped>
 section{
+  display: flex;
+  flex-direction: column;
     margin: 0;
     padding: 0;
+    position: relative;
 }
 .navbar {
   display: flex;
   justify-content: space-between;
 }
+
 .taskGrid{
     display: grid;
     grid-template-columns: auto auto auto;
-    gap: 2%;
+    gap: 5%;
     margin: 2%;
-
+    justify-content: center;
+    
+}
+@media (max-width: 950px){
+  .taskGrid{
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 5%;
+    margin: 2%;
+    justify-content: center;
+}
+}
+@media (max-width: 550px){
+  .taskGrid{
+    display: grid;
+    grid-template-columns: auto;
+    justify-content: center;
+}
 }
 </style>

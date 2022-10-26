@@ -5,7 +5,7 @@
         <div class="updateInfo">
           <label for="titol">Títol de la tasca</label>
           <textarea
-            v-model="updateTask.title"
+            v-model="props.task.title"
             name="titol"
             id="titol"
             cols="30"
@@ -14,7 +14,7 @@
           >
           <label for="descripcio">Descripció</label>
           <textarea
-            v-model="updateTask.description"
+            v-model="props.task.description"
             name="descripcio"
             id="descripcio"
             cols="30"
@@ -45,8 +45,7 @@
       </div>
     </div>
   </section>
-
-  <router-view></router-view>
+  <!-- <router-view></router-view> -->
 </template>
 
 <script setup>
@@ -64,14 +63,14 @@ const supabase = createClient(
 const props = defineProps({ task: Object });
 const editing = ref(false);
 const doing = ref(true);
-
-const edit = () => {
-  editing.value = !editing.value;
-};
 const updateTask = ref({
   title: props.task.title,
   description: props.task.description,
 });
+
+const edit = () => {
+  editing.value = !editing.value;
+};
 
 const saveTask = async () => {
   await taskStore.updateTask(
@@ -105,7 +104,6 @@ const deleteTask = async () => {
   width: 300px;
   display: flex;
   border-radius: 8px;
-  margin: 2% 10%;
 }
 .card {
   background: linear-gradient(rgb(255, 255, 0), rgb(172, 172, 12));
@@ -113,7 +111,14 @@ const deleteTask = async () => {
   width: 300px;
   display: flex;
   border-radius: 8px;
-  margin: 2% 10%;
+
+}
+.updateCard {
+  background: linear-gradient(rgb(255, 255, 0), rgb(255, 136, 0));
+  height: 200px;
+  width: 300px;
+  display: flex;
+  border-radius: 8px;
 }
 .cardInfo {
   padding: 20px;
@@ -128,14 +133,6 @@ const deleteTask = async () => {
 }
 .descripcio {
   font-weight: lighter;
-}
-.updateCard {
-  background: linear-gradient(rgb(255, 255, 0), rgb(255, 136, 0));
-  height: 200px;
-  width: 300px;
-  display: flex;
-  border-radius: 8px;
-  margin: 2% 10%;
 }
 .updateInfo {
   padding: 20px;
@@ -157,4 +154,5 @@ button{
   border: 0;
   color: blue;
 }
+
 </style>

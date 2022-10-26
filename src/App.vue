@@ -8,7 +8,9 @@
             <router-link :to="{name: 'login'}">Auth</router-link>
         </li>
     </ul> -->
+   
     <router-view></router-view>
+ 
 </template>
 <script setup>
 import piniaPersist from 'pinia-plugin-persist'
@@ -38,4 +40,5 @@ onMounted(async () => {
 });
 </script>
 <style scoped>
+
 </style>

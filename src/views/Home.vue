@@ -11,9 +11,9 @@
   <section>
     <CrearTask />
     <div class="arxiu">
+      <button @click="filtered = 'unfinished'"><h1>Pendents</h1></button>
+      <button @click="filtered = 'done'"><h1>Fetes</h1></button>
     <button @click="filtered = 'all'"><h1>Totes</h1></button>
-    <button @click="filtered = 'done'"><h1>Fetes</h1></button>
-    <button @click="filtered = 'unfinished'"><h1>Per fer</h1></button>
   </div>
     <div class="taskGrid">
       <div v-for="task in tasks">
@@ -80,8 +80,9 @@ section{
   display: flex;
   justify-content: space-around;
   margin: 0% 30%;
-  
-  
+}
+button:hover{
+  text-decoration: underline;
 }
 @media (max-width: 950px){
   .taskGrid{

@@ -12,7 +12,7 @@
                 <div class="field">
                     <label class="label">Contrasenya</label>
                     <div class="control">
-                        <input v-model="password" class="input" type="password" placeholder="password">
+                        <input v-model="password" class="input" type="password" placeholder="contrasenya">
                     </div>
                 </div>
                 <br>

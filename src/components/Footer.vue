@@ -1,7 +1,10 @@
 <template>
 <div class="footer">
-    <h1>Què farem avui</h1>
-    Una app d'Enric Bonic
+    <p>Què farem avui és una app que et permetrà 
+        crear els teus recordatoris per quan t'avorreixis i vulguis 
+        mirar que et falta per fer a la vida. No s'ha fet mai res igual.</p>
+        ©Enric Bonic 2022
+
 </div>
 </template>
 <script setup>

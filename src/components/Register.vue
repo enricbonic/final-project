@@ -12,14 +12,14 @@
                 <div class="field">
                     <label class="label">Contrasenya</label>
                     <div class="control">
-                        <input v-model="password" class="input" type="password" placeholder="password">
+                        <input v-model="password" class="input" type="password" placeholder="contrasenya">
                     </div>
                 </div>
                 <br>
                 <div class="field">
                     <label class="label">Confirma la contrasenya</label>
                     <div class="control">
-                        <input v-model="confirmPassword" class="input" type="password" placeholder="confirm password">
+                        <input v-model="confirmPassword" class="input" type="password" placeholder="confirma la contrasenya">
                     </div>
                 </div>
                 <br>

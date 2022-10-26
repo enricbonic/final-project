@@ -63,10 +63,7 @@ const supabase = createClient(
 const props = defineProps({ task: Object });
 const editing = ref(false);
 const doing = ref(true);
-const updateTask = ref({
-  title: props.task.title,
-  description: props.task.description,
-});
+
 
 const edit = () => {
   editing.value = !editing.value;
@@ -74,8 +71,8 @@ const edit = () => {
 
 const saveTask = async () => {
   await taskStore.updateTask(
-    updateTask.value.title,
-    updateTask.value.description,
+    props.task.title,
+    props.task.description,
     props.task.id
   );
   editing.value = !editing.value;

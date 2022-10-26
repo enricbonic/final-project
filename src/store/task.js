@@ -46,6 +46,8 @@ export const useTaskStore = defineStore('task', {
             .from('task')
             .update({ title: title, description: description})
             .eq('id', id)
+            console.log(response)
+            console.log(title, description, id)
             // TODO modificar el estado de la task
             // Encontrar el indice de la task con ese id y cambiar su contenido con task
         },

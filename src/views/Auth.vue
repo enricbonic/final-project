@@ -6,8 +6,7 @@
     <router-view></router-view>
     <h2>No saps distingir "Sign In" de "Log In"? 
         <br> Nosaltres tampoc! 
-    <br> Registra't i/o inicia sessió i no hauràs 
-    de veure mai més aquesta pantalla!!</h2>
+    <br> Aquí podràs registrar-te o iniciar sessió</h2>
 </div>
 </div>
     <Footer></Footer>

@@ -15,5 +15,6 @@
 background-color: cornflowerblue;
 padding: 20px;
 position: relative;
+text-align: end;
 }
 </style>

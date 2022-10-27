@@ -103,8 +103,6 @@ const deleteTask = async () => {
 </script>
 
 <style>
-.topCard{
-}
 .categoria{
   position: absolute;
   top: 5px;
@@ -125,8 +123,17 @@ option{
   display: flex;
   border-radius: 8px;
 }
-.cardDone>div>div>.titol{
+.cardDone>div>div>div>.titol{
   text-decoration: line-through;
+}
+.cardDone>div>div>.descripcio{
+  text-decoration: line-through;
+}
+.cardDone>div>div>div>.titol:hover{
+  text-decoration: underline;
+}
+.cardDone>div>div>.descripcio:hover{
+  text-decoration: underline;
 }
 .card {
   background: linear-gradient(rgb(255, 255, 0), rgb(172, 172, 12));

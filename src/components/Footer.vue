@@ -1,6 +1,6 @@
 <template>
 <div class="footer">
-    <p>Què farem avui és una app que et permetrà 
+    <p>"Què farem avui" és una app que et permetrà 
         crear els teus recordatoris per quan t'avorreixis i vulguis 
         mirar que et falta per fer a la vida. 
         <br> No s'ha fet mai res igual.
@@ -13,10 +13,10 @@
 </script>
 <style scoped>
 .footer{
-background-color: cornflowerblue;
-padding: 20px;
-position: relative;
-text-align: end;
+    display: flex;
+    background-color: cornflowerblue;
+    padding: 20px;
+    text-align: end;
 }
 @media (max-width: 620px){
  p{

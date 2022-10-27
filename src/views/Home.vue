@@ -30,6 +30,7 @@
     </div>
   </section>
 </template>
+
 <script setup>
 import { ref, computed } from "vue";
 import { useRouter } from "vue-router";
@@ -44,12 +45,12 @@ const password = ref("");
 const taskStore = useTaskStore();
 
 const tasks = computed(() => {
-  if (filtered.value == 'all') {
+  if (filtered.value === 'all') {
     return taskStore.task;
-  } else if (filtered.value == 'done'){
-  return taskStore.task.filter(task => task.isCreated == true) 
-  } else if (filtered.value == 'unfinished'){
-  return taskStore.task.filter(task => task.isCreated == false)
+  } else if (filtered.value === 'done'){
+  return taskStore.task.filter(task => task.isCreated === true) 
+  } else if (filtered.value === 'unfinished'){
+  return taskStore.task.filter(task => task.isCreated === false)
   }
 })
 const filtered = ref('all')

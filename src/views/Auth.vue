@@ -21,6 +21,7 @@
 i gaudir de la tranquil·litat de saber què has de fer!</h2>
 </div>
 </div>
+<br>
     <Footer></Footer>
 </div>
 </template>
@@ -60,6 +61,9 @@ h2{
     display: flex;
     align-items: center;
     margin-left: 20px;
+}
+h1{
+    color: cornflowerblue;
 }
 .authFlex>h2{
     width: 40%;

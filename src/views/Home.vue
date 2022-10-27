@@ -1,11 +1,19 @@
 <template>
   <div class="navbar">
     <h1>Què farem avui?</h1>
-    <router-link :to="{ name: 'login' }"
-      ><button class="button" type="submit" placeholder="logout">
-        Log Out
-      </button></router-link
-    >
+    <div class="languageOut">
+    <select name="idioma" id="idioma">
+                    <option value="cat">Català</option>
+                    <option value="esp">Español</option>
+                    <option value="eng">English</option>
+                    <option value="fra">Français</option>
+                </select>
+                <router-link :to="{ name: 'login' }"
+                ><button class="button" type="submit" placeholder="logout">
+                  Log Out
+                </button></router-link
+                >
+              </div>
   </div>
   <!-- <router-link :to="{name: 'creartask'}"><button>Tasca nova</button></router-link> -->
   <section>
@@ -66,11 +74,25 @@ section{
 .navbar {
   display: flex;
   justify-content: space-between;
+  margin: 0px 20px;
 }
-
+.languageOut{
+  margin: 20px;
+}
+select{
+  background-color: cornflowerblue;
+  color: white;
+  border: none;
+  padding: 2px;
+}
+.languageOut button{
+  border: 1px solid cornflowerblue;
+  padding: 2px;
+  color: cornflowerblue;
+}
 .taskGrid{
     display: grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: auto auto auto auto;
     gap: 5%;
     margin: 2%;
     justify-content: center;
@@ -83,6 +105,15 @@ section{
 }
 button:hover{
   text-decoration: underline;
+}
+@media (max-width: 1400px){
+  .taskGrid{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 5%;
+    margin: 2%;
+    justify-content: center;
+}
 }
 @media (max-width: 950px){
   .taskGrid{

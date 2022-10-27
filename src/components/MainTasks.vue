@@ -102,6 +102,9 @@ const deleteTask = async () => {
   display: flex;
   border-radius: 8px;
 }
+.cardDone>div>div>.titol{
+  text-decoration: line-through;
+}
 .card {
   background: linear-gradient(rgb(255, 255, 0), rgb(172, 172, 12));
   height: 200px;

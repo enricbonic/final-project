@@ -61,9 +61,12 @@ h2{
     display: flex;
     align-items: center;
     margin-left: 20px;
+    color: cornflowerblue
+
 }
 h1{
-    color: cornflowerblue;
+    color: beige;
+    text-shadow: 1px 1px cornflowerblue;
 }
 .authFlex>h2{
     width: 40%;

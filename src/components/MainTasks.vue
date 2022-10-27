@@ -49,7 +49,7 @@
           <div class="botons">
             <button @click="edit">Editar</button>
             <button v-if="doing" @click="doneTask()">Tasca feta</button>
-            <button v-else @click="doneTask()">Torna a crear</button>
+            <button v-else @click="doneTask()">Tasca pendent</button>
             <button @click="deleteTask()">Eliminar</button>
           </div>
         </div>
@@ -110,6 +110,9 @@ const deleteTask = async () => {
   border-style: none;
   background: none;
 }
+.categoria:hover{
+  font-size: 20px;
+}
 option{
   text-align: right;
 }
@@ -125,15 +128,19 @@ option{
 }
 .cardDone>div>div>div>.titol{
   text-decoration: line-through;
+  text-decoration-color: red
 }
 .cardDone>div>div>.descripcio{
   text-decoration: line-through;
+  text-decoration-color: red
 }
 .cardDone>div>div>div>.titol:hover{
   text-decoration: underline;
+  text-decoration-color: red
 }
 .cardDone>div>div>.descripcio:hover{
   text-decoration: underline;
+  text-decoration-color: red
 }
 .card {
   background: linear-gradient(rgb(255, 255, 0), rgb(172, 172, 12));

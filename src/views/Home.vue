@@ -10,7 +10,7 @@
                 </select>
                 <router-link :to="{ name: 'login' }"
                 ><button class="button" type="submit" placeholder="logout">
-                  Log Out
+                  Tanca la sessió
                 </button></router-link
                 >
               </div>
@@ -77,6 +77,10 @@ section{
   justify-content: space-between;
   margin: 0px 20px;
 }
+.navbar>h1{
+    color: beige;
+    text-shadow: 1px 1px cornflowerblue;
+}
 .languageOut{
   margin: 20px;
 }
@@ -85,6 +89,9 @@ select{
   color: white;
   border: none;
   padding: 2px;
+}
+select:hover{
+  text-decoration: underline;
 }
 .languageOut button{
   border: 1px solid cornflowerblue;
@@ -104,8 +111,12 @@ select{
   justify-content: space-around;
   margin: 0% 30%;
 }
+button>h1{
+color: cornflowerblue;
+}
 button:hover{
   text-decoration: underline;
+  text-decoration-color: cornflowerblue;
 }
 @media (max-width: 1400px){
   .taskGrid{

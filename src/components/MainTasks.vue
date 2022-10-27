@@ -32,7 +32,18 @@
       <div :class="[props.task.isCreated ? 'cardDone':'card']">
         <div class="cardInfo">
           <div>
-          <div class="titol">{{ props.task.title }}</div>
+            <div class="topCard">
+              <div class="titol">{{ props.task.title }}</div>
+              <select class="categoria" name="categoria" id="categoria">
+                    <option value="categoria" disabled selected></option>
+                    <option value="aniversaris">Aniversaris</option>
+                    <option value="laboral">Laboral</option>
+                    <option value="oci">Oci</option>
+                    <option value="personal">Personal</option>
+                    <option value="salut">Salut</option>
+                    <option value="altres">Altres</option>
+                </select>
+            </div>
           <div class="descripcio">{{ props.task.description }}</div>
         </div>
           <div class="botons">
@@ -92,6 +103,18 @@ const deleteTask = async () => {
 </script>
 
 <style>
+.topCard{
+}
+.categoria{
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  border-style: none;
+  background: none;
+}
+option{
+  text-align: right;
+}
 .mainTask{
   margin: 0;
 }

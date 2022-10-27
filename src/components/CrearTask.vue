@@ -43,13 +43,32 @@ console.log(`Títol: ${title.value}`);
 console.log(`Descripció: ${description.value}`);
 
 const addTask = (async () => {
-    await taskStore.addTask(title.value, description.value, authStore.user.id);
+    if(title.value.length<=15 && title.value.length>=1 && description.value.length<=220){
+    try{
+    await taskStore.addTask(title.value, description.value, authStore.user.id);}
+    catch (error) {
+        console.log(error)
+    }
     // router.push({ name: 'maintasks' });
     title.value = '';
     description.value = '';
     taskStore.setTask()
-    router.push({ name: 'home' })
+    router.push({ name: 'home' });
+} else {
+        if(title.value.length>15){
+            alert('Títol de màxim de 15 caràcters')
+        }
+        if(description.value.length>220){
+            alert('Descripció de màxim 220 caràcters')
+        }
+        if(title.value.length<1){
+            alert('Escriu algun títol')
+        }
+
+}
+    
 });
+
 </script>
 
 <style scoped>
